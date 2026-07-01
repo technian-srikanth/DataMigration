@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="view_data_migrate_servers_form" model="ir.ui.view">
+        <field name="name">view.data.migrate.servers.form</field>
+        <field name="model">data.migrate.servers</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="verify_server" string="Verify server" type="object" class="oe_highlight"
+                            invisible="verified"/>
+                    <button name="action_fetch_databases" string="Sync Databases" type="object" class="oe_highlight"
+                            invisible="is_db"/>
+                    <field name="status" widget="statusbar" statusbar_visible="inactive,active"/>
+                </header>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="username"/>
+                        <field name="password"/>
+                        <field name="db_id"/>
+                        <field name="is_db" readonly="1"/>
+                        <field name="url"/>
+                        <field name="verified" readonly="1"/>
+                        <field name="validation_response" readonly="1"/>
+                    </group>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_data_migrate_servers_list" model="ir.ui.view">
+        <field name="name">view.data.migrate.servers.list</field>
+        <field name="model">data.migrate.servers</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="action_data_migrate_servers" model="ir.actions.act_window">
+        <field name="name">Servers</field>
+        <field name="res_model">data.migrate.servers</field>
+        <field name="view_mode">list,form</field>
+        <field name="view_id" ref="view_data_migrate_servers_list"/>
+    </record>
+</odoo>

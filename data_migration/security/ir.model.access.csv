@@ -1,0 +1,8 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_data_migrate_servers,access_data_migrate_servers,model_data_migrate_servers,,1,1,1,1
+access_data_migrate,access_data_migrate,model_data_migrate,,1,1,1,1
+access_data_migrate_line,access_data_migrate_line,model_data_migrate_line,,1,1,1,1
+access_data_migrate_database,access_data_migrate_database,model_data_migrate_database,,1,1,1,1
+access_data_migrate_model,access_data_migrate_model,model_data_migrate_model,,1,1,1,1
+access_data_migrate_model_fields,access_data_migrate_model_fields,model_data_migrate_model_fields,,1,1,1,1
+access_data_migrate_unique_field,access_data_migrate_unique_field,model_data_migrate_unique_field,,1,1,1,1

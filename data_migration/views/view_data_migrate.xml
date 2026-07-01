@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="view_data_migrate_form" model="ir.ui.view">
+        <field name="name">view.data.migrate.form</field>
+        <field name="model">data.migrate</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="get_remote_models" string="Sync Models" type="object" class="oe_highlight"
+                            invisible="is_model"/>
+                    <button name="get_remote_fields" string="Sync Fields" type="object" class="oe_highlight"/>
+                    <button name="migrate_create_only" string="Create Records" type="object" class="oe_highlight"/>
+                    <button name="migrate_update_only" string="Update Records" type="object" class="oe_highlight"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="server_01"/>
+                            <field name="select_model_server_01"/>
+                        </group>
+                        <group>
+                            <field name="server_02"/>
+                            <field name="is_model" readonly="1"/>
+                            <field name="select_model_server_02"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page name="Unique Fields">
+                            <field name="unique_field_ids">
+                                <list editable="bottom">
+                                    <field name="sequence" widget="handle"/>
+                                    <field name="source_field_id"/>
+                                    <field name="target_field_id"/>
+                                </list>
+                            </field>
+                        </page>
+                    </notebook>
+                    <notebook>
+                        <page name="Map Fields">
+                            <field name="line_ids">
+                                <list editable="bottom">
+                                    <field name="sequence" widget="handle"/>
+                                    <field name="field_server_01"/>
+                                    <field name="field_server_02"/>
+                                </list>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_data_migrate_list" model="ir.ui.view">
+        <field name="name">view.data.migrate.list</field>
+        <field name="model">data.migrate</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="sequence" widget="handle"/>
+                <field name="name"/>
+                <field name="server_01"/>
+                <field name="select_model_server_01"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="action_data_migrate" model="ir.actions.act_window">
+        <field name="name">Data Migrations</field>
+        <field name="res_model">data.migrate</field>
+        <field name="view_mode">list,form</field>
+        <field name="view_id" ref="view_data_migrate_list"/>
+    </record>
+</odoo>
