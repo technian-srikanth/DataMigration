@@ -7,6 +7,7 @@ class Servers(models.Model):
     _name = 'data.migrate.servers'
     _rec_name = 'name'
     _inherit = ['mail.thread', 'mail.activity.mixin']
+    _description = 'Data Migration Servers'
 
     name = fields.Char()
     username = fields.Char()
