@@ -31,10 +31,13 @@ class Servers(models.Model):
 
     @api.onchange('url')
     def _onchange_url(self):
-        for rec in self:
-            rec.verified = False
-            rec.status = 'inactive'
-            rec.is_db = False
+        self.verify_server()
+
+    @api.model
+    def write(self, vals):
+        if 'url' in vals:
+            self.verify_server()
+        return super(Servers, self).write(vals)
 
     @api.onchange('db_id')
     def _onchange_db(self):
