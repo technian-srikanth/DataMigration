@@ -405,10 +405,11 @@ class DataMigrate(models.Model):
                 skipped += 1
                 continue
             try:
-                target_obj.create(vals)
-                created += 1
-            except Exception:
-                self.env.cr.rollback()
+                with self.env.cr.savepoint():
+                    target_obj.create(vals)
+                    created += 1
+            except Exception as e:
+                _logger.warning("Failed to create record: %s", e)
                 skipped += 1
                 continue
 
@@ -481,10 +482,11 @@ class DataMigrate(models.Model):
                 continue
 
             try:
-                existing.write(vals)
-                updated += 1
-            except Exception:
-                self.env.cr.rollback()
+                with self.env.cr.savepoint():
+                    existing.write(vals)
+                    updated += 1
+            except Exception as e:
+                _logger.warning("Failed to Update record: %s", e)
                 skipped += 1
                 continue
 

@@ -17,7 +17,7 @@
                         <field name="name"/>
                         <field name="username"/>
                         <field name="password"/>
-                        <field name="db_id"/>
+                        <field name="db_id" domain="[('server_id', '=', id)]"/>
                         <field name="is_db" readonly="1"/>
                         <field name="url"/>
                         <field name="verified" readonly="1"/>

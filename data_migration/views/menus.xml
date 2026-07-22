@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
     <menuitem id="menu_data_migration" name="DMS"/>
-    <menuitem id="menu_server" name="server" parent="menu_data_migration" action="action_data_migrate_servers"/>
+    <menuitem id="menu_server" name="Server" parent="menu_data_migration" action="action_data_migrate_servers"/>
     <menuitem id="menu_data_migrate" name="Migrations" parent="menu_data_migration" action="action_data_migrate"/>
 </odoo>
